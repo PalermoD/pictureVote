@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 
 /* universal */
@@ -38,7 +39,7 @@ h1 {
 h2 {
 	font-size: 1.2em;
 	letter-spacing: -1px;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 	text-align: center;
 	font-weight: normal;
 	color: #777;
