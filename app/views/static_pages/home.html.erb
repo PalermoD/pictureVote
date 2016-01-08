@@ -1,13 +1,13 @@
 <style>
-  input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
-  @include box_sizing;
+input, textarea, select, .uneditable-input {
+	border: 1px solid #bbb;
+	width: 100%;
+	margin-bottom: 15px;
+	@include box_sizing;
 }
 
 input {
-  height: auto !important;
+	height: auto !important;
 }
 
 </style>
@@ -22,8 +22,34 @@ input {
 		<div class="modal-content">
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
 			<h2>Sign up</h2>
+			
+			<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+			<%= devise_error_messages! %>
 
+			<div class="field">
+				<%= f.label :email %><br />
+				<%= f.email_field :email, autofocus: true %>
+			</div>
 
+			<div class="field">
+				<%= f.label :password %>
+				<% if @minimum_password_length %>
+				<em>(<%= @minimum_password_length %> characters minimum)</em>
+				<% end %><br />
+				<%= f.password_field :password, autocomplete: "off" %>
+			</div>
+
+			<div class="field">
+				<%= f.label :password_confirmation %><br />
+				<%= f.password_field :password_confirmation, autocomplete: "off" %>
+			</div>
+
+			<div class="actions">
+				<%= f.submit "Sign up" %>
+			</div>
+			<% end %>
+
+			<%= render "devise/shared/links" %>
 
 		</div>
 
@@ -36,10 +62,37 @@ input {
 <!-- Modal -->
 <div id="myModal2" class="modal fade" role="dialog">
 	<div class="modal-dialog">
-        <!-- Modal content-->
+		<!-- Modal content-->
 		<div class="modal-content">
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
-		    <h2>Log In</h2>
+			
+
+			<h2>Log in</h2>
+
+			<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+			<div class="field">
+				<%= f.label :email %><br />
+				<%= f.email_field :email, autofocus: true %>
+			</div>
+
+			<div class="field">
+				<%= f.label :password %><br />
+				<%= f.password_field :password, autocomplete: "off" %>
+			</div>
+
+			<% if devise_mapping.rememberable? -%>
+			<div class="field">
+				<%= f.check_box :remember_me %>
+				<%= f.label :remember_me %>
+			</div>
+			<% end -%>
+
+			<div class="actions">
+				<%= f.submit "Log in" %>
+			</div>
+			<% end %>
+
+			<%= render "devise/shared/links" %>
 
 			
 		</div>
