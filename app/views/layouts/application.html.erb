@@ -17,16 +17,29 @@
         <%= link_to "PhotoApp", '#', id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Log in", '#',  "data-target" => "#myModal2", "data-toggle" => "modal", "type" => "button"  %></li>
-            <li><%= link_to "Sign up", '#',  "data-target" => "#myModal", "data-toggle" => "modal", "type" => "button"  %></li>
+          
+            
 
+            <% if user_signed_in? %>
+            <li>
+              <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+            </li>
+            <% else %>
+            
+              <li>
+                <%= link_to "Log in", '#',  "data-target" => "#myModal2", "data-toggle" => "modal", "type" => "button"  %>
+              </li>
+              <li>
+                <%= link_to "Sign up", '#',  "data-target" => "#myModal", "data-toggle" => "modal", "type" => "button"  %>
+              </li>
+            
+            <% end %>
           </ul>
         </nav>
       </div>
     </header>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+   
 
 
     <div class="container">
