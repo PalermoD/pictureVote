@@ -76,6 +76,7 @@ input {
 
 			<div class="sign">
 				<h2>Log in</h2>
+				<div class="form-group">
 
 				<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 				<div class="field">
@@ -99,6 +100,7 @@ input {
 					<%= f.submit "Log in", class: "btn btn-primary" %>
 				</div>
 				<% end %>
+			</div>
 			
 
 			<%= render "devise/shared/links" %>
